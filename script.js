@@ -16,7 +16,8 @@ class Calculator {
     }
 
     appendNumber(number) {
-        this.currentCalNumber = this.currentCalNumber.toString() + number.toString()
+        if (number === '.')
+            this.currentCalNumber = this.currentCalNumber.toString() + number.toString()
     }
 
     chooseOperation(operation) {

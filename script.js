@@ -1,8 +1,8 @@
 class Calculator {
-    constructor(perviousCalNumber, currentCalNumber) {
-        this.perviousCalNumber = perviousCalNumber
-        this.currentCalNumber = currentCalNumber
-        this.clear
+    constructor(perviousCalNumberText, currentCalNumberText) {
+        this.perviousCalNumberText = perviousCalNumberText
+        this.currentCalNumberText = currentCalNumberText
+        this.clear()
     }
 
     clear() {
@@ -16,7 +16,7 @@ class Calculator {
     }
 
     appendNumber(number) {
-
+        this.currentCalNumber = this.currentCalNumber.toString() + number.toString()
     }
 
     chooseOperation(operation) {
@@ -28,20 +28,27 @@ class Calculator {
     }
 
     updateDisplay() {
-
+        this.currentCalNumberText.innerText = this.currentCalNumber
     }
 }
 
 
-const numberButtons = document.querySelectorAll('data-number')
-const numberButtons = document.querySelectorAll('data-operation')
-const equalsButton = document.querySelector('data-equals')
-const deleteButton = document.querySelector('data-delete')
-const allClearButton = document.querySelector('data-all-clear')
-const perviousCalNumber = document.querySelector('data-pervious')
-const currentCalNumber = document.querySelector('data-current')
+const numberButtons = document.querySelectorAll('[data-numbers]')
+const operationButtons = document.querySelectorAll('[data-operation]')
+const equalsButton = document.querySelector('[data-equals]')
+const deleteButton = document.querySelector('[data-delete]')
+const allClearButton = document.querySelector('[data-all-clear]')
+const perviousCalNumberText = document.querySelector('[data-pervious]')
+const currentCalNumberText = document.querySelector('[data-current]')
 
 
-const calculator = new calculator(perviousCalNumber, currentCalNumber)
+const calculator = new Calculator(perviousCalNumberText, currentCalNumberText)
 
-number.deleteButton.foreach
+numberButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        calculator.appendNumber(button.innerText)
+        calculator.updateDisplay()
+
+    })
+
+})
